@@ -54,6 +54,15 @@
             "rid": "win-x86"
           }
         }
+      },
+      "SupernovaLibrary/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/SupernovaLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SupernovaLibrary.dll": {}
+        }
       }
     }
   },
@@ -165,12 +174,18 @@
         "runtimes/win-x86/native/SDL2.dll",
         "runtimes/win-x86/native/soft_oal.dll"
       ]
+    },
+    "SupernovaLibrary/1.0.0": {
+      "type": "project",
+      "path": "../SupernovaLibrary/SupernovaLibrary.csproj",
+      "msbuildProject": "../SupernovaLibrary/SupernovaLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "MonoGame.Content.Builder.Task >= 3.8.0.1641",
-      "MonoGame.Framework.DesktopGL >= 3.8.0.1641"
+      "MonoGame.Framework.DesktopGL >= 3.8.0.1641",
+      "SupernovaLibrary >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -199,7 +214,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\N1bbL\\Desktop\\Supernova\\SupernovaLibrary\\SupernovaLibrary.csproj": {
+              "projectPath": "C:\\Users\\N1bbL\\Desktop\\Supernova\\SupernovaLibrary\\SupernovaLibrary.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

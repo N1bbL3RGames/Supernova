@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -13,7 +13,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Content\" />
+    <ProjectReference Include="..\SupernovaLibrary\SupernovaLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Lidgren.Network">
+      <HintPath>bin\Debug\net6.0\Lidgren.Network.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

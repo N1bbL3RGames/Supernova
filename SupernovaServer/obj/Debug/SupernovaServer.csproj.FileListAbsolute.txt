@@ -1,0 +1,16 @@
+C:\Users\N1bbL\Desktop\Supernova\SupernovaServer\bin\Debug\SupernovaServer.exe.config
+C:\Users\N1bbL\Desktop\Supernova\SupernovaServer\bin\Debug\SupernovaServer.exe
+C:\Users\N1bbL\Desktop\Supernova\SupernovaServer\bin\Debug\SupernovaServer.pdb
+C:\Users\N1bbL\Desktop\Supernova\SupernovaServer\bin\Debug\Lidgren.Network.dll
+C:\Users\N1bbL\Desktop\Supernova\SupernovaServer\bin\Debug\SupernovaLibrary.dll
+C:\Users\N1bbL\Desktop\Supernova\SupernovaServer\bin\Debug\SupernovaLibrary.pdb
+C:\Users\N1bbL\Desktop\Supernova\SupernovaServer\obj\Debug\SupernovaServer.csproj.AssemblyReference.cache
+C:\Users\N1bbL\Desktop\Supernova\SupernovaServer\obj\Debug\SupernovaServer.csproj.SuggestedBindingRedirects.cache
+C:\Users\N1bbL\Desktop\Supernova\SupernovaServer\obj\Debug\SupernovaServer.csproj.CoreCompileInputs.cache
+C:\Users\N1bbL\Desktop\Supernova\SupernovaServer\obj\Debug\SupernovaServer.csproj.CopyComplete
+C:\Users\N1bbL\Desktop\Supernova\SupernovaServer\obj\Debug\SupernovaServer.exe
+C:\Users\N1bbL\Desktop\Supernova\SupernovaServer\obj\Debug\SupernovaServer.pdb
+C:\Users\N1bbL\Desktop\Supernova\SupernovaServer\bin\Debug\Microsoft.Xna.Framework.dll
+C:\Users\N1bbL\Desktop\Supernova\SupernovaServer\bin\Debug\Microsoft.Xna.Framework.xml
+C:\Users\N1bbL\Desktop\Supernova\SupernovaServer\obj\Debug\SupernovaServer.Forms.MainForm.resources
+C:\Users\N1bbL\Desktop\Supernova\SupernovaServer\obj\Debug\SupernovaServer.csproj.GenerateResource.cache

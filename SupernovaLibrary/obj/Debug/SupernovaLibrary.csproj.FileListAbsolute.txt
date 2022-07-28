@@ -1,0 +1,10 @@
+C:\Users\N1bbL\Desktop\Supernova\SupernovaLibrary\bin\Debug\SupernovaLibrary.dll
+C:\Users\N1bbL\Desktop\Supernova\SupernovaLibrary\bin\Debug\SupernovaLibrary.pdb
+C:\Users\N1bbL\Desktop\Supernova\SupernovaLibrary\obj\Debug\SupernovaLibrary.csproj.AssemblyReference.cache
+C:\Users\N1bbL\Desktop\Supernova\SupernovaLibrary\obj\Debug\SupernovaLibrary.csproj.CoreCompileInputs.cache
+C:\Users\N1bbL\Desktop\Supernova\SupernovaLibrary\obj\Debug\SupernovaLibrary.dll
+C:\Users\N1bbL\Desktop\Supernova\SupernovaLibrary\obj\Debug\SupernovaLibrary.pdb
+C:\Users\N1bbL\Desktop\Supernova\SupernovaLibrary\bin\Debug\Lidgren.Network.dll
+C:\Users\N1bbL\Desktop\Supernova\SupernovaLibrary\obj\Debug\SupernovaLibrary.csproj.CopyComplete
+C:\Users\N1bbL\Desktop\Supernova\SupernovaLibrary\bin\Debug\Microsoft.Xna.Framework.dll
+C:\Users\N1bbL\Desktop\Supernova\SupernovaLibrary\bin\Debug\Microsoft.Xna.Framework.xml

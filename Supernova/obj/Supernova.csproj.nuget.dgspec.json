@@ -4,6 +4,21 @@
     "C:\\Users\\N1bbL\\Desktop\\Supernova\\Supernova\\Supernova.csproj": {}
   },
   "projects": {
+    "C:\\Users\\N1bbL\\Desktop\\Supernova\\SupernovaLibrary\\SupernovaLibrary.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\N1bbL\\Desktop\\Supernova\\SupernovaLibrary\\SupernovaLibrary.csproj",
+        "projectName": "SupernovaLibrary",
+        "projectPath": "C:\\Users\\N1bbL\\Desktop\\Supernova\\SupernovaLibrary\\SupernovaLibrary.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
     "C:\\Users\\N1bbL\\Desktop\\Supernova\\Supernova\\Supernova.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -27,7 +42,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\N1bbL\\Desktop\\Supernova\\SupernovaLibrary\\SupernovaLibrary.csproj": {
+                "projectPath": "C:\\Users\\N1bbL\\Desktop\\Supernova\\SupernovaLibrary\\SupernovaLibrary.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
