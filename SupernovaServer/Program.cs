@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Lidgren.Network;
 using SupernovaLibrary;
 using System.Net.Mime;
@@ -15,7 +12,7 @@ namespace SupernovaServer
     {
         [STAThread]
 
-        static void Main(string[] args)
+        static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(true);

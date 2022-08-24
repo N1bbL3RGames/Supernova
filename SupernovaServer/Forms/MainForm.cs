@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SupernovaServer.EventArguments;
+using SupernovaServer.Managers;
 
 namespace SupernovaServer.Forms
 {
@@ -19,7 +20,20 @@ namespace SupernovaServer.Forms
             managerLogger.NewLogMessageEvent += NewLogMessageEvent;
 
             server = new Server(managerLogger);
+            server.newPlayer += NewPlayerEvent;
+
             InitializeComponent();
+        }
+
+        void NewPlayerEvent(object sender, NewPlayerEventArgs e)
+        {
+            if (InvokeRequired) 
+            {
+                Invoke(new EventHandler<NewPlayerEventArgs>(NewPlayerEvent), sender, e);
+                return;
+            }
+
+            lstPlayers.Items.Add(e.Username); //User IDs are not implemented
         }
 
         void NewLogMessageEvent(object sender, LogMessageEventArgs e)
@@ -51,6 +65,18 @@ namespace SupernovaServer.Forms
                 btnStartServer.Enabled = true;
                 btnStopServer.Enabled = false;
             }
+        }
+
+        private void kickToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lstPlayers.SelectedIndex == -1)
+            {
+                MessageBox.Show("Select a player first");
+                return;
+            }
+
+            server.KickPlayer(lstPlayers.SelectedIndex);
+            lstPlayers.Items.RemoveAt(lstPlayers.SelectedIndex);
         }
     }
 }

@@ -2,20 +2,24 @@
 using System.Collections.Generic;
 using SupernovaLibrary;
 using Lidgren.Network;
+using SupernovaServer.Managers;
 
-namespace SupernovaServer
+namespace SupernovaServer.Commands
 {
     class PlayerPositionCommand : ICommand
     {
-        public void Run(ManagerLogger managerLogger, NetServer server, NetIncomingMessage inc, Player player, List<Player> players)
+        public void Run(ManagerLogger managerLogger, Server server, NetIncomingMessage inc, PlayerAndConnection playCon, List<PlayerAndConnection> players)
         {
-            managerLogger.AddLogMessage("Server", "Sending out new player position");
+            if (playCon != null)
+            {
+                managerLogger.AddLogMessage("Server", "Sending out new player position");
 
-            var outmsg = server.CreateMessage();
-            outmsg.Write((byte)PacketType.PlayerPosition);
-            outmsg.WriteAllProperties(player);
+                var outmsg = server.netServer.CreateMessage();
+                outmsg.Write((byte)PacketType.PlayerPosition);
+                outmsg.WriteAllProperties(playCon);
 
-            server.SendToAll(outmsg, NetDeliveryMethod.ReliableOrdered);
+                server.netServer.SendToAll(outmsg, NetDeliveryMethod.ReliableOrdered);
+            }
         }
     }
 }

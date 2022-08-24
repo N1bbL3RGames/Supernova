@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SupernovaLibrary;
 using Lidgren.Network;
+using SupernovaServer.Commands;
 
 namespace SupernovaServer
 {
@@ -22,6 +23,8 @@ namespace SupernovaServer
                     return new AllPlayersCommand();
                 case PacketType.Input:
                     return new InputCommand();
+                case PacketType.Kick:
+                    return new KickPlayerCommand();
                 default:
                     throw new ArgumentOutOfRangeException("packetType");
             }

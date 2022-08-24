@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using SupernovaLibrary;
 using Lidgren.Network;
+using SupernovaServer.Managers;
 
-namespace SupernovaServer
+namespace SupernovaServer.Commands
 {
     class LoginCommand : ICommand
     {
-        public void Run(ManagerLogger managerLogger, NetServer server, NetIncomingMessage inc, Player player, List<Player> players)
+        public void Run(ManagerLogger managerLogger, Server server, NetIncomingMessage inc, PlayerAndConnection playCon, List<PlayerAndConnection> players)
         {
             managerLogger.AddLogMessage("Server", "New connection...");
             var data = inc.ReadByte();
@@ -16,38 +17,44 @@ namespace SupernovaServer
             {
                 managerLogger.AddLogMessage("Server", "...Connection accepted.");
 
-                player = CreatePlayer(inc, players);
+                playCon = CreatePlayer(inc, players);
                 inc.SenderConnection.Approve();
 
-                var outmsg = server.CreateMessage();
+                var outmsg = server.netServer.CreateMessage();
                 outmsg.Write((byte)PacketType.Login);
                 outmsg.Write(true);
                 outmsg.Write(players.Count);
 
                 for (int a = 0; a < players.Count; a++)
-                    outmsg.WriteAllProperties(players[a]);
+                    outmsg.WriteAllProperties(players[a].Player);
 
-                server.SendMessage(outmsg, inc.SenderConnection, NetDeliveryMethod.ReliableOrdered, 0);
+                server.netServer.SendMessage(outmsg, inc.SenderConnection, NetDeliveryMethod.ReliableOrdered, 0);
 
                 var command = new PlayerPositionCommand();
-                command.Run(managerLogger, server, inc, player, players);
+                command.Run(managerLogger, server, inc, playCon, players);
+
+                server.SendNewPlayerEvent(playCon.Player.Name, playCon.Player.ID);
             }
             else
                 inc.SenderConnection.Deny("Failed to send correct information.");
         }
 
-        private Player CreatePlayer(NetIncomingMessage inc, List<Player> players)
+        private PlayerAndConnection CreatePlayer(NetIncomingMessage inc, List<PlayerAndConnection> players)
         {
-            var player = new Player
+            var playCon = new PlayerAndConnection
             {
-                Name = inc.ReadString(),
-                ID = players.Count,
-                PositionX = 0,
-                PositionY = 0
+                Player = new Player
+                {
+                    Name = inc.ReadString(),
+                    ID = players.Count,
+                    PositionX = 0,
+                    PositionY = 0
+                },
+                Connection = inc.SenderConnection
             };
 
-            players.Add(player);
-            return player;
+            players.Add(playCon);
+            return playCon;
         }
     }
 }

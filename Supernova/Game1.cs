@@ -2,13 +2,14 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Supernova.Managers;
 
 namespace Supernova
 {
-    internal class Game1 : Game
+    public class Game1 : Game
     {
-        private GraphicsDeviceManager graphics;
-        private SpriteBatch spriteBatch;
+        GraphicsDeviceManager graphics;
+        SpriteBatch spriteBatch;
 
         private ManagerNetwork managerNetwork;
         private ManagerInput managerInput;
@@ -18,8 +19,8 @@ namespace Supernova
 
         public Game1() : base()
         {
-            this.graphics = new GraphicsDeviceManager(this);
-            this.Content.RootDirectory = "Content\\Assets";
+            graphics = new GraphicsDeviceManager(this);
+            Content.RootDirectory = "Content\\Assets";
             
             managerNetwork = new ManagerNetwork();
             managerInput = new ManagerInput(managerNetwork);
@@ -37,9 +38,9 @@ namespace Supernova
 
         protected override void LoadContent()
         {
-            this.spriteBatch = new SpriteBatch(GraphicsDevice);
-            texture = this.Content.Load<Texture2D>("blank"); //Testing
-            font = this.Content.Load<SpriteFont>("font"); //Testing
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            texture = Content.Load<Texture2D>("blank"); //Testing
+            font = Content.Load<SpriteFont>("font"); //Testing
 
             base.LoadContent();
         }
@@ -60,10 +61,7 @@ namespace Supernova
 
         protected override void Draw(GameTime gameTime)
         {
-            if(managerNetwork.Active)
-                GraphicsDevice.Clear(Color.Green);
-            else
-                GraphicsDevice.Clear(Color.Red);
+            GraphicsDevice.Clear(managerNetwork.Active ? Color.Green : Color.Red);
 
             spriteBatch.Begin();
 
@@ -72,8 +70,7 @@ namespace Supernova
                 foreach(var player in managerNetwork.Players)
                 {
                     spriteBatch.Draw(texture, new Rectangle(player.PositionX, player.PositionY, 50, 50), Color.BlueViolet);
-                    spriteBatch.DrawString(font, player.ID.ToString(), new Vector2(player.PositionX + 5, player.PositionY + 25), Color.Black);
-
+                    
                     if(player.ID != managerNetwork.UserID)
                     {
                         spriteBatch.DrawString(font, player.Name, new Vector2(player.PositionX + 5, player.PositionY + 5), Color.Black);

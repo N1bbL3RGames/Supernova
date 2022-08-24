@@ -4,7 +4,7 @@
     {
         [STAThread]
 
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
             using(var game = new Game1())
             {

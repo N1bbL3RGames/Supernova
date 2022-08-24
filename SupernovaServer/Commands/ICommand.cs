@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using SupernovaLibrary;
 using Lidgren.Network;
+using SupernovaServer.Managers;
 
-namespace SupernovaServer
+namespace SupernovaServer.Commands
 {
     interface ICommand
     {
-        void Run(ManagerLogger managerLogger, NetServer server, NetIncomingMessage inc, Player player, List<Player> players);
+        void Run(ManagerLogger managerLogger, Server server, NetIncomingMessage inc, PlayerAndConnection playCon, List<PlayerAndConnection> players);
     }
 }

@@ -5,22 +5,23 @@ using SupernovaLibrary;
 using Lidgren.Network;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using SupernovaServer.Managers;
 
-namespace SupernovaServer
+namespace SupernovaServer.Commands
 {
     class InputCommand : ICommand
     {
-        public void Run(ManagerLogger managerLogger, NetServer server, NetIncomingMessage inc, Player player, List<Player> players)
+        public void Run(ManagerLogger managerLogger, Server server, NetIncomingMessage inc, PlayerAndConnection playCon, List<PlayerAndConnection> players)
         {
             managerLogger.AddLogMessage("Server", "Received new input");
 
             var key = (Keys)inc.ReadByte();
             var id = inc.ReadInt32();
-            player = players.FirstOrDefault(p => p.ID == id);
+            playCon = players.FirstOrDefault(p => p.Player.ID == id);
 
-            if (player == null)
+            if (playCon == null)
             {
-                managerLogger.AddLogMessage("Server", String.Format("Could not find player with connection ID: {0}", id));
+                managerLogger.AddLogMessage("Server", string.Format("Could not find player with connection ID: {0}", id));
                 return;
             }
 
@@ -41,18 +42,17 @@ namespace SupernovaServer
                 case Keys.Right:
                     x++;
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException();
             }
 
-            if(!ManagerCollision.CheckCollision(new Rectangle(player.PositionX + x, player.PositionY + y, 50, 50), player.ID, players))
+            var player = playCon.Player;
+            if (!ManagerCollision.CheckCollision(new Rectangle(player.PositionX + x, player.PositionY + y, 50, 50), player.ID, players.Select(p => p.Player).ToList()))
             {
                 player.PositionX += x;
                 player.PositionY += y;
             }
 
             var command = new PlayerPositionCommand();
-            command.Run(managerLogger, server, inc, player, players);
+            command.Run(managerLogger, server, inc, playCon, players);
         }
     }
 }

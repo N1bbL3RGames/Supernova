@@ -7,9 +7,9 @@ using Lidgren.Network;
 using SupernovaLibrary;
 using Microsoft.Xna.Framework.Input;
 
-namespace Supernova
+namespace Supernova.Managers
 {
-    internal class ManagerNetwork
+    class ManagerNetwork
     {
         private NetClient client;
         public List<Player> Players { get; set; }
@@ -73,26 +73,44 @@ namespace Supernova
         public void Update()
         {
             NetIncomingMessage inc;
-            while((inc = client.ReadMessage()) != null)
+            while ((inc = client.ReadMessage()) != null)
             {
-                if (inc.MessageType != NetIncomingMessageType.Data)
-                    continue;
-
-                var packetType = (PacketType)inc.ReadByte();
-                switch(packetType)
+                switch (inc.MessageType)
                 {
-                    case PacketType.PlayerPosition:
-                        ReadPlayer(inc);
+                    case NetIncomingMessageType.Data:
+                        Data(inc);
                         break;
-                    case PacketType.AllPlayers:
-                        ReceiveAllPlayers(inc);
+                    case NetIncomingMessageType.StatusChanged:
+                        switch ((NetConnectionStatus)inc.ReadByte())
+                        {
+                            case NetConnectionStatus.Disconnected:
+                                Active = false;
+                                break;
+                        }
                         break;
-                    case PacketType.Login:
-                        Active = true;
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
                 }
+            }
+        }
+
+        private void Data(NetIncomingMessage inc)
+        {
+            var packetType = (PacketType)inc.ReadByte();
+            switch (packetType)
+            {
+                case PacketType.PlayerPosition:
+                    ReadPlayer(inc);
+                    break;
+                case PacketType.AllPlayers:
+                    ReceiveAllPlayers(inc);
+                    break;
+                case PacketType.Login:
+                    Active = true;
+                    break;
+                case PacketType.Kick:
+                    ReceiveKick(inc);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
@@ -118,6 +136,18 @@ namespace Supernova
             }
             else
                 Players.Add(player);
+        }
+
+        private void ReceiveKick(NetIncomingMessage inc)
+        {
+            int id = inc.ReadInt32();
+            var player = Players.FirstOrDefault(p => p.ID == id);
+            
+            if(player != null)
+                Players.Remove(player);
+
+            for (int a = id; a < Players.Count; a++)
+                Players[a].ID--;
         }
 
         public void SendInput(Keys key)

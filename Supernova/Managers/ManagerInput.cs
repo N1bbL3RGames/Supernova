@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Input;
 
-namespace Supernova
+namespace Supernova.Managers
 {
     class ManagerInput
     {
@@ -27,7 +27,7 @@ namespace Supernova
 
         private void CheckKeyState(Keys key, KeyboardState state)
         {
-            if(state.IsKeyDown(key))
+            if (state.IsKeyDown(key))
             {
                 managerNetwork.SendInput(key);
             }
