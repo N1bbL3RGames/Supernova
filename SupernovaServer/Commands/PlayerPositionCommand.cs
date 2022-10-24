@@ -16,7 +16,7 @@ namespace SupernovaServer.Commands
 
                 var outmsg = server.netServer.CreateMessage();
                 outmsg.Write((byte)PacketType.PlayerPosition);
-                outmsg.WriteAllProperties(playCon);
+                outmsg.WriteAllProperties(playCon.Player);
 
                 server.netServer.SendToAll(outmsg, NetDeliveryMethod.ReliableOrdered);
             }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>C:/Users/N1bbL/Desktop/Supernova/Supernova/Content/Assets/font.spritefont</SourceFile>
-  <SourceTime>2020-08-10T11:17:28-05:00</SourceTime>
+  <SourceTime>2022-08-24T18:18:41.8090947-05:00</SourceTime>
   <DestFile>C:/Users/N1bbL/Desktop/Supernova/Supernova/Content/bin/DesktopGL/Content/Assets/font.xnb</DestFile>
-  <DestTime>2022-07-21T11:01:21.921148-05:00</DestTime>
+  <DestTime>2022-08-24T18:19:13.1927845-05:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2020-08-10T11:17:54-05:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>
