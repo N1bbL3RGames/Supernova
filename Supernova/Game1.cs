@@ -10,6 +10,8 @@ namespace Supernova
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
+        private Texture2D blank;
+
         public Game1() : base()
         {
             this.graphics = new GraphicsDeviceManager(this);
@@ -21,6 +23,10 @@ namespace Supernova
 
         protected override void Initialize()
         {
+            graphics.IsFullScreen = false;
+            graphics.PreferredBackBufferHeight = 720;
+            graphics.PreferredBackBufferWidth = 360;
+            graphics.ApplyChanges();
 
             base.Initialize();
         }
@@ -28,6 +34,7 @@ namespace Supernova
         protected override void LoadContent()
         {
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
+            this.Content.Load<Texture2D>("blank.png");
 
             base.LoadContent();
         }
@@ -46,8 +53,10 @@ namespace Supernova
 
         protected override void Draw(GameTime gameTime)
         {
-            this.GraphicsDevice.Clear(Color.CornflowerBlue);
+            this.GraphicsDevice.Clear(Color.White);
             this.spriteBatch.Begin();
+
+            spriteBatch.Draw(blank, new Rectangle(0, 0, 360, 40), Color.DarkGreen);
 
             this.spriteBatch.End();
             base.Draw(gameTime);

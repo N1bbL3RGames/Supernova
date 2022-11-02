@@ -23,3 +23,4 @@ C:\Users\N1bbL\Desktop\Supernova\Supernova\obj\Debug\net6.0\refint\Supernova.dll
 C:\Users\N1bbL\Desktop\Supernova\Supernova\obj\Debug\net6.0\Supernova.pdb
 C:\Users\N1bbL\Desktop\Supernova\Supernova\obj\Debug\net6.0\Supernova.genruntimeconfig.cache
 C:\Users\N1bbL\Desktop\Supernova\Supernova\obj\Debug\net6.0\ref\Supernova.dll
+C:\Users\N1bbL\Desktop\Supernova\Supernova\bin\Debug\net6.0\Content\blank.xnb
